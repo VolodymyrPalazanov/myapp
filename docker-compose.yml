@@ -1,0 +1,25 @@
+services:
+  project-db:
+    image: "mysql:5.7.43"
+    container_name: projekt-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: zaq1@WSX
+      MYSQL_USER: user
+      MYSQL_PASSWORD: zaq1@WSX
+      MYSQL_DATABASE: test
+  project-app:
+    restart: always
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    image: "php_czysty"
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/app
+    depends_on:
+      - project-db
+networks:
+  backend:
+    name: bd
