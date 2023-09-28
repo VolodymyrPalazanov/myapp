@@ -11,7 +11,7 @@ use Cake\Controller\ComponentRegistry;
  */
 class MathComponent extends Component
 {
-    public function add($a=2, $b=2)
+    public function add($a=3, $b=2)
     {
         echo($a + $b);
     }

@@ -20,6 +20,18 @@ services:
       - ./:/app
     depends_on:
       - project-db
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    links:
+      -  project-db
+    environment:
+      PMA_HOST:  project-db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 8081:80
 networks:
   backend:
     name: bd
